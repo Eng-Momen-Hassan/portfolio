@@ -713,7 +713,7 @@ main {
 }
 
 .Certifications-item img {
-  width: 100%;
+  width: 70%;
   filter: grayscale(1);
   transition: var(--transition-1);
 }
