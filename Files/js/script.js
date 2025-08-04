@@ -15,7 +15,7 @@ sidebarBtn.addEventListener("click", function () {
 });
 
 // download CV function
-function downloadCV() {
+function download() {
   const link = document.createElement('a');
   link.href = './assets/images/Mo\'men Hassan (CV).pdf';
   link.download = 'MomenHassan-CV.pdf';
