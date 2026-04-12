@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="en">
 
  <head>
   <meta charset="UTF-8">
@@ -10,12 +10,15 @@
   <link rel="stylesheet" href="./Files/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Poppins for body text -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- JetBrains Mono for headings — cybersecurity feel -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
  </head>
-  
+
   <body>
-    
+
    <main>
 
     <aside class="sidebar" data-sidebar>
@@ -29,12 +32,11 @@
         <div class="info-content">
           <h1 class="name" title="Mo'men Hassan">Mo'men Hassan</h1>
 
-          <p class="title"> Network && Security Engineer</p>
+          <p class="title">Network &amp; Security Engineer</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
           <span>Show Contacts</span>
-
           <ion-icon name="chevron-down"></ion-icon>
         </button>
 
@@ -47,58 +49,55 @@
         <ul class="contacts-list">
 
           <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="mail-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Email</p>
-
-              <a href="momenhassan.20.9.1977@gmail.com" class="contact-link"> momenhassan.20.9.1977@gmail.com</a>
+              <!-- fixed: added mailto: prefix -->
+              <a href="mailto:momenhassan.20.9.1977@gmail.com" class="contact-link">momenhassan.20.9.1977@gmail.com</a>
             </div>
           </li>
 
           <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="phone-portrait-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Phone</p>
-
-              <a href="tel:+201555223151" class="contact-link"> +201555223151</a>
+              <a href="tel:+201555223151" class="contact-link">+201555223151</a>
             </div>
           </li>
 
           <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="calendar-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
-
               <time datetime="2005-09-02">2-9-2005</time>
             </div>
           </li>
 
           <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="location-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Location</p>
-
-              <address> El-Ghareeb Street, Mit Okba, Cairo, Egypt</address>
+              <address>El-Ghareeb Street, Mit Okba, Cairo, Egypt</address>
             </div>
           </li>
-            <a href="./Files/images/Mo'men Hassan (CV) .pdf" onclick="download()" class="cv-button">CV</a>
-        </ul> 
+
+          <!-- fixed: wrapped in <li> so it's a valid child of <ul> -->
+          <li class="contact-item">
+            <a href="./Files/images/Mo'men Hassan (CV) .pdf"
+               class="cv-button"
+               data-download
+               data-filename="MomenHassan-CV.pdf">CV</a>
+          </li>
+
+        </ul>
 
         <div class="separator"></div>
 
@@ -121,22 +120,22 @@
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
+
         </ul>
       </div>
     </aside>
 
-    <!-- - #main-content-->
+    <!-- #MAIN-CONTENT -->
 
     <div class="main-content">
 
       <!-- #NAVBAR -->
 
       <nav class="navbar">
-
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link active" data-nav-link>About</button>
           </li>
 
           <li class="navbar-item">
@@ -154,12 +153,13 @@
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Contact</button>
           </li>
+
         </ul>
       </nav>
 
-      <!-- - #ABOUT -->
+      <!-- #ABOUT -->
 
-      <article class="about  active" data-page="about">
+      <article class="about active" data-page="about">
 
         <header>
           <h2 class="h2 article-title">About me</h2>
@@ -168,40 +168,35 @@
         <section class="about-text">
           <p>
             I'm Moamen Hassan, a passionate third-year Information Technology
-             student with strong interests in networking, Linux systems, and cybersecurity
+            student with strong interests in networking, Linux systems, and cybersecurity.
           </p>
-
           <p>
-             I have hands-on experience with Ubuntu and Kali Linux, working on network
-             configuration, basic server administration, and using tools like Wireshark and
-             Nmap. I'm confident in handling networking devices such as routers, switches,
-             firewalls, and servers. I'm CCNA-level proficient and currently expanding my
-             knowledge in security practices, firewall setup, and server management. I also
-             have a background in software development using C#, HTML, CSS, and
-             JavaScript. I am currently learning embedded using C++. I'm eager to gain real-world experience through internships and
-             collaborative projects
+            I have hands-on experience with Ubuntu and Kali Linux, working on network
+            configuration, basic server administration, and using tools like Wireshark and
+            Nmap. I'm confident in handling networking devices such as routers, switches,
+            firewalls, and servers. I'm CCNA-level proficient and currently expanding my
+            knowledge in security practices, firewall setup, and server management. I also
+            have a background in software development using C#, HTML, CSS, and
+            JavaScript. I am currently learning embedded systems using C++. I'm eager to
+            gain real-world experience through internships and collaborative projects.
           </p>
         </section>
 
-        <!--- servic -->
+        <!-- services -->
 
         <section class="service">
 
-          <h3 class="h3 service-title">What I'm working</h3>
+          <h3 class="h3 service-title">What I'm working on</h3>
 
           <ul class="service-list">
 
             <li class="service-item">
-
               <div class="service-icon-box">
                 <img src="./Files/images/Network icon.avif" alt="Network icon" width="40">
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title"> Network Security</h4>
-
+                <h4 class="h4 service-item-title">Network Security</h4>
                 <p class="service-item-text">
-                  
                   Network Security Engineer skilled in designing, building, and securing network infrastructures.
                   Experienced in threat detection, vulnerability assessment, and applying advanced cybersecurity solutions.
                 </p>
@@ -209,57 +204,48 @@
             </li>
 
             <li class="service-item">
-
               <div class="service-icon-box">
-                <img src="./Files/images/wep icon.png" alt="wep icon" width="40">
+                <img src="./Files/images/wep icon.png" alt="Web Programming icon" width="40">
               </div>
-
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Web Programming</h4>
-
                 <p class="service-item-text">
-                 I am a web developer specializing in building modern applications and dynamic interfaces using advanced web technologies.
-                 I focus on writing clean, scalable code and a high-performance user experience.
+                  Web developer specializing in building modern applications and dynamic interfaces using advanced web technologies.
+                  I focus on writing clean, scalable code and delivering a high-performance user experience.
                 </p>
               </div>
             </li>
 
             <li class="service-item">
-
               <div class="service-icon-box">
-                <img src="./Files/images/security icon.webp" alt=" Security Operations icon" width="50">
+                <img src="./Files/images/security icon.webp" alt="Security Operations icon" width="50">
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title"> Security Operations</h4>
-
+                <h4 class="h4 service-item-title">Security Operations</h4>
                 <p class="service-item-text">
                   Security Operations specialist with hands-on experience in threat detection, incident response, and infrastructure protection.
                   Skilled in SIEM analysis, log correlation, and identifying malicious activity across enterprise networks.
                 </p>
               </div>
-
             </li>
 
             <li class="service-item">
-
               <div class="service-icon-box">
-                <img src="./Files/images/penetration testing.png" alt="penetration testing icon" width="40">
+                <img src="./Files/images/penetration testing.png" alt="Penetration Testing icon" width="40">
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">penetration testing</h4>
-
+                <h4 class="h4 service-item-title">Penetration Testing</h4>
                 <p class="service-item-text">
-                  I'm a penetration tester who thinks like the enemy. I break into systems the way real attackers do — no scripts, just skill. 
-                  I don't follow checklists, I follow logic. Offensive mindset, creative approach, and zero tolerance for weak security.
+                  I think like the attacker. I break into systems the way real threat actors do — no scripts, just skill.
+                  Offensive mindset, creative approach, and zero tolerance for weak security.
                 </p>
               </div>
             </li>
+
           </ul>
         </section>
 
-        <!-- - Achievements -->
+        <!-- Achievements -->
 
         <section class="Achievements">
 
@@ -274,19 +260,23 @@
                   <img src="./Files/images/hack the box .jpg" alt="Hack the box" width="60" data-Achievements-avatar>
                 </figure>
 
-                <h4 class="h4 Achievements-item-title" data-Achievements-title>Hack the box</h4>
+                <h4 class="h4 Achievements-item-title" data-Achievements-title>Hack the Box</h4>
 
                 <div class="Achievements-text" data-Achievements-text>
                   <p>
-                  “Momen was hired to assess our network security posture and conduct a penetration test.
-                  We were very impressed with the depth of analysis and professionalism shown throughout the engagement. 
-                  He clearly understands the needs of clients and delivers results that matter.”
+                    "Momen was hired to assess our network security posture and conduct a penetration test.
+                    We were very impressed with the depth of analysis and professionalism shown throughout the engagement.
+                    He clearly understands the needs of clients and delivers results that matter."
+                  </p>
+                </div>
+
               </div>
             </li>
+
           </ul>
         </section>
 
-        <!-- - Achievements modal -->
+        <!-- Achievements modal -->
 
         <div class="modal-container" data-modal-container>
 
@@ -302,28 +292,25 @@
               <figure class="modal-avatar-box">
                 <img src="./Files/images/avatar-1.png" alt="Hack the box" width="20" data-modal-img>
               </figure>
-
               <img src="./Files/images/avatar-1.png" alt="quote icon">
             </div>
 
             <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Hack the box</h4>
-
+              <h4 class="h3 modal-title" data-modal-title>Hack the Box</h4>
               <time datetime="2025-06-14">14 June, 2025</time>
-
               <div data-modal-text>
                 <p>
-                 “Momen was hired to assess our network security posture and conduct a penetration test.
-                  We were very impressed with the depth of analysis and professionalism shown throughout the engagement. 
-                  He clearly understands the needs of clients and delivers results that matter.”
+                  "Momen was hired to assess our network security posture and conduct a penetration test.
+                  We were very impressed with the depth of analysis and professionalism shown throughout the engagement.
+                  He clearly understands the needs of clients and delivers results that matter."
                 </p>
               </div>
             </div>
+
           </section>
         </div>
 
-        <!--  - Certifications-->
+        <!-- Certifications -->
 
         <section class="Certifications">
 
@@ -332,63 +319,71 @@
           <ul class="Certifications-list has-scrollbar">
 
             <li class="Certifications-item">
-               <a href="./Files/images/JuniorCybersecurityAnalystUpdate20250804-31-x3rdp0.pdf" onclick="download()">
-                 <img src="./Files/images/junior-cybersecurity-analyst-career-path.1.png" alt="Cybersecurity Certifications ">
-               </a>
+              <!-- data-download replaces inline onclick -->
+              <a href="./Files/images/JuniorCybersecurityAnalystUpdate20250804-31-x3rdp0.pdf"
+                 data-download data-filename="Junior-Cybersecurity-Analyst.pdf">
+                <img src="./Files/images/junior-cybersecurity-analyst-career-path.1.png" alt="Junior Cybersecurity Analyst">
+              </a>
             </li>
 
             <li class="Certifications-item">
-              <a href="./Files/images/NetworkTechnicianCareerPath.pdf" onclick="download()">
-                <img src="./Files/images/network-technician-career-path.png" alt=" NetworkTechnician Certifications">
+              <a href="./Files/images/NetworkTechnicianCareerPath.pdf"
+                 data-download data-filename="Network-Technician-Career-Path.pdf">
+                <img src="./Files/images/network-technician-career-path.png" alt="Network Technician Career Path">
               </a>
             </li>
-           
+
             <li class="Certifications-item">
-               <a href="./Files/images/Ethical Hacker.pdf" onclick="download()">
-                 <img src="./Files/images/ethical-hacker.png" alt="ethical-hacker ">
-               </a>
+              <a href="./Files/images/Ethical Hacker.pdf"
+                 data-download data-filename="Ethical-Hacker.pdf">
+                <img src="./Files/images/ethical-hacker.png" alt="Ethical Hacker">
+              </a>
             </li>
-             <li class="Certifications-item">
-               <a href="./Files/images/Cisco Certified Support Technician Networking.pdf" onclick="download()">
-                 <img src="./Files/images/CCST Networking.jpeg" alt=" CCST Networking">
-               </a>
-            </li>
-           
+
             <li class="Certifications-item">
-                <a href="./Files/images/Cisco Certified Support Technician IT Support.pdf" onclick="download()">
-                  <img src="./Files/images/CCST IT-Support.jpeg" alt=" CCST IT-Support">
-                </a>
+              <a href="./Files/images/Cisco Certified Support Technician Networking.pdf"
+                 data-download data-filename="CCST-Networking.pdf">
+                <img src="./Files/images/CCST Networking.jpeg" alt="CCST Networking">
+              </a>
             </li>
-           
+
+            <li class="Certifications-item">
+              <a href="./Files/images/Cisco Certified Support Technician IT Support.pdf"
+                 data-download data-filename="CCST-IT-Support.pdf">
+                <img src="./Files/images/CCST IT-Support.jpeg" alt="CCST IT Support">
+              </a>
+            </li>
+
             <li class="Certifications-item">
               <a href="https://tryhackme.com/p/momenhassan.20.9.1977?show_achievement_badge=linux-privesc">
-                <img src="./Files/images/linuxprivesc.svg" alt=" linuxprivesc logo">
+                <img src="./Files/images/linuxprivesc.svg" alt="Linux Privilege Escalation badge">
               </a>
             </li>
 
-           <li class="Certifications-item">
+            <li class="Certifications-item">
               <a href="https://tryhackme.com/momenhassan.20.9.1977/badges/hash-cracker">
-                <img src="./Files/images/hashcracker.svg" alt=" hashcracker logo">
+                <img src="./Files/images/hashcracker.svg" alt="Hash Cracker badge">
               </a>
             </li>
-           
+
             <li class="Certifications-item">
               <a href="https://tryhackme.com/momenhassan.20.9.1977/badges/win-priv-esc">
-                <img src="./Files/images/windowsprivesc.svg" alt=" windowsprivesc logo">
+                <img src="./Files/images/windowsprivesc.svg" alt="Windows Privilege Escalation badge">
               </a>
             </li>
-            
+
             <li class="Certifications-item">
               <a href="https://tryhackme.com/momenhassan.20.9.1977/badges/blue">
-                <img src="./Files/images/blue.svg" alt=" blue logo">
+                <img src="./Files/images/blue.svg" alt="Blue badge">
               </a>
             </li>
-           
+
           </ul>
         </section>
+
       </article>
 
-      <!--  - #RESUME -->
+      <!-- #RESUME -->
 
       <article class="resume" data-page="resume">
 
@@ -402,44 +397,38 @@
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-
             <h3 class="h3">Education</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title"> ASSIUT INTERNATIONAL TECHNOLOGICAL UNIVERSITY</h4>
-
+              <h4 class="h4 timeline-item-title">ASSIUT INTERNATIONAL TECHNOLOGICAL UNIVERSITY</h4>
               <span>2023 — 2027</span>
-
               <p class="timeline-text">
-               They do not know how to follow pleasure by reason, and whoever does wrong, all pleasure is assumed all
+                Pursuing a B.Sc. in Information Technology with focus on networking,
+                cybersecurity, and software development.
               </p>
             </li>
 
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title"> Cisco Networking Academy</h4>
-
+              <h4 class="h4 timeline-item-title">Cisco Networking Academy</h4>
               <span>2023 — 2024</span>
-
               <p class="timeline-text">
-               Two things, however, are painful in reproaching pleasure, which pleasure loves or flees, but great pains follow them.
+                Completed CCNA curriculum covering routing, switching, and
+                network security fundamentals. Earned CCST Networking and IT Support certifications.
               </p>
             </li>
 
             <li class="timeline-item">
-
               <h4 class="h4 timeline-item-title">Hack The Box</h4>
-
               <span>2025 — Present</span>
-
               <p class="timeline-text">
-               No one, for pleasure itself, is destroyed by the flatteries of present pleasures and is corrupted, which pains andwhich annoyances are excepted.
+                Active member completing penetration testing labs and CTF challenges
+                to sharpen offensive security skills in real-world scenarios.
               </p>
             </li>
+
           </ol>
         </section>
 
@@ -449,52 +438,41 @@
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-
             <h3 class="h3">Experience</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title"> Cybersecurity Trainee - Self-Learning Platforms</h4>
-
+              <h4 class="h4 timeline-item-title">Cybersecurity Trainee — Self-Learning Platforms</h4>
               <span>2023 — Present</span>
-
               <p class="timeline-text">
-                Practicing ethical hacking and penetration testing through globalplatforms like TryHackMe and Hack The Box.
-                Completing hands-on labs focused on individual tools (e.g., Nmap,Burp Suite, JohnTheRipper, Hydra, etc.).
-                Gaining experience in vulnerability scanning, privilege escalation,password attacks, and real-world scenarios.
-                Regularly participating in Capture The Flag (CTF) rooms to strengthen problem-solving and technical skills
+                Practicing ethical hacking and penetration testing through global platforms like TryHackMe and Hack The Box.
+                Completing hands-on labs focused on individual tools (e.g., Nmap, Burp Suite, JohnTheRipper, Hydra).
+                Gaining experience in vulnerability scanning, privilege escalation, password attacks, and real-world scenarios.
+                Regularly participating in Capture The Flag (CTF) rooms to strengthen problem-solving and technical skills.
               </p>
             </li>
 
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title"> Software & Network Programming (Self Practice)</h4>
-
+              <h4 class="h4 timeline-item-title">Software &amp; Network Programming (Self Practice)</h4>
               <span>2024 — 2025</span>
-
               <p class="timeline-text">
-                 Built TCP/IP and UDP socket-based servers in C#.
-                 Developed a basic GUI-based chat system demonstrating client
-                 server communication.
-                 Practiced real-time message handling and GUI integration for
-                 networking applications
-
+                Built TCP/IP and UDP socket-based servers in C#.
+                Developed a basic GUI-based chat system demonstrating client-server communication.
+                Practiced real-time message handling and GUI integration for networking applications.
+              </p>
             </li>
 
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Network design </h4>
-
+              <h4 class="h4 timeline-item-title">Network Design</h4>
               <span>2024 — Present</span>
-
-              <p class="timeline-text">  
-              Planned and implemented a scalable network topology with redundancy and firewall segmentation, 
-              supporting over 100 users with zero downtime and full compliance with security standards
+              <p class="timeline-text">
+                Planned and implemented a scalable network topology with redundancy and firewall segmentation,
+                supporting over 100 users with zero downtime and full compliance with security standards.
               </p>
             </li>
+
           </ol>
         </section>
 
@@ -505,57 +483,51 @@
           <ul class="skills-list content-card">
 
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">Network administrator</h5>
+                <h5 class="h5">Network Administrator</h5>
                 <data value="85">85%</data>
               </div>
-
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 85%;"></div>
               </div>
             </li>
 
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">penetration testing</h5>
+                <h5 class="h5">Penetration Testing</h5>
                 <data value="75">75%</data>
               </div>
-
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 75%;"></div>
               </div>
             </li>
 
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">security operations</h5>
+                <h5 class="h5">Security Operations</h5>
                 <data value="70">70%</data>
               </div>
-
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 70%;"></div>
               </div>
             </li>
 
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">wep programming</h5>
+                <h5 class="h5">Web Programming</h5>
                 <data value="50">50%</data>
               </div>
-
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 50%;"></div>
               </div>
             </li>
+
           </ul>
         </section>
+
       </article>
 
-      <!-- - #PORTFOLIO    -->
+      <!-- #PORTFOLIO -->
 
       <article class="portfolio" data-page="portfolio">
 
@@ -566,259 +538,184 @@
         <section class="projects">
 
           <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Network</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web Programming</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>security operations</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>penetration testing</button>
-            </li>
+            <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
+            <li class="filter-item"><button data-filter-btn>Network</button></li>
+            <li class="filter-item"><button data-filter-btn>Web Programming</button></li>
+            <li class="filter-item"><button data-filter-btn>security operations</button></li>
+            <li class="filter-item"><button data-filter-btn>penetration testing</button></li>
           </ul>
 
           <div class="filter-select-box">
 
             <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
+              <!-- fixed typo: was data-selecct-value -->
+              <div class="select-value" data-select-value>Select category</div>
               <div class="select-icon">
                 <ion-icon name="chevron-down"></ion-icon>
               </div>
-
             </button>
 
             <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Network</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web Programming</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>security operations</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>penetration testing</button>
-              </li>
+              <li class="select-item"><button data-select-item>All</button></li>
+              <li class="select-item"><button data-select-item>Network</button></li>
+              <li class="select-item"><button data-select-item>Web Programming</button></li>
+              <li class="select-item"><button data-select-item>security operations</button></li>
+              <li class="select-item"><button data-select-item>penetration testing</button></li>
             </ul>
+
           </div>
 
           <ul class="project-list">
-           
-           <li class="project-item  active" data-filter-item data-category="Web Programming">
+
+            <li class="project-item active" data-filter-item data-category="Web Programming">
               <a href="./Files/projects/wifi card/wifi card.html">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/wifi card.png" alt="login" loading="lazy">
+                  <img src="./Files/images/wifi card.png" alt="WiFi Card" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">wifi card</h3>
-
+                <h3 class="project-title">WiFi Card</h3>
                 <p class="project-category">Web Programming</p>
               </a>
             </li>
-           
-            <li class="project-item  active" data-filter-item data-category="Web Programming">
+
+            <li class="project-item active" data-filter-item data-category="Web Programming">
               <a href="./Files/projects/animated login register form/login.html">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/login&register.png" alt="login" loading="lazy">
+                  <img src="./Files/images/login&register.png" alt="Animated Login & Register" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">animated login&register</h3>
-
+                <h3 class="project-title">Animated Login &amp; Register</h3>
                 <p class="project-category">Web Programming</p>
               </a>
             </li>
-           
-            <li class="project-item  active" data-filter-item data-category="Web Programming">
+
+            <li class="project-item active" data-filter-item data-category="Web Programming">
               <a href="./Files/projects/animated login/login.html">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/login.png" alt="login" loading="lazy">
+                  <img src="./Files/images/login.png" alt="Animated Login" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">animated login</h3>
-
+                <h3 class="project-title">Animated Login</h3>
                 <p class="project-category">Web Programming</p>
               </a>
             </li>
-             
-            <li class="project-item  active" data-filter-item data-category="Web Programming">
+
+            <li class="project-item active" data-filter-item data-category="Web Programming">
               <a href="./Files/projects/war tube clock/war tube clock.html">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/war tube clock.png" alt="war tube clock" loading="lazy">
+                  <img src="./Files/images/war tube clock.png" alt="War Tube Clock" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">war tube clock</h3>
-
+                <h3 class="project-title">War Tube Clock</h3>
                 <p class="project-category">Web Programming</p>
               </a>
             </li>
- 
-            <li class="project-item  active" data-filter-item data-category="Web Programming">
+
+            <li class="project-item active" data-filter-item data-category="Web Programming">
               <a href="./Files/projects/the cube/Rubick's cube.html">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/Rubick's cube.png" alt="Rubick's cube" loading="lazy">
+                  <img src="./Files/images/Rubick's cube.png" alt="Rubik's Cube" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">Rubick's cube</h3>
-
+                <h3 class="project-title">Rubik's Cube</h3>
                 <p class="project-category">Web Programming</p>
               </a>
             </li>
 
-
-            <li class="project-item  active" data-filter-item data-category="Network">
+            <li class="project-item active" data-filter-item data-category="Network">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/network design(Game Development Center).jpg" alt="Game Development Center" loading="lazy">
+                  <img src="./Files/images/network design(Game Development Center).jpg" alt="Game Development Center Network" loading="lazy">
                 </figure>
-
                 <h3 class="project-title">Game Development Center</h3>
-
                 <p class="project-category">Network</p>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="Network">
+            <li class="project-item active" data-filter-item data-category="Network">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/network design(International School).png" alt="International School" loading="lazy">
+                  <img src="./Files/images/network design(International School).png" alt="International School Network" loading="lazy">
                 </figure>
-
                 <h3 class="project-title">International School</h3>
-
                 <p class="project-category">Network</p>
               </a>
             </li>
 
-
-            <li class="project-item  active" data-filter-item data-category="Network">
+            <li class="project-item active" data-filter-item data-category="Network">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/network design(accounting offices).png " alt="accounting offices" loading="lazy">
+                  <img src="./Files/images/network design(accounting offices).png" alt="Accounting Offices Network" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">accounting offices</h3>
-
+                <h3 class="project-title">Accounting Offices</h3>
                 <p class="project-category">Network</p>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="Network">
+            <li class="project-item active" data-filter-item data-category="Network">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/network design(sporting club).PNG" alt="sporting club" loading="lazy">
+                  <img src="./Files/images/network design(sporting club).PNG" alt="Sporting Club Network" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">sporting club</h3>
-
+                <h3 class="project-title">Sporting Club</h3>
                 <p class="project-category">Network</p>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="Network">
+            <li class="project-item active" data-filter-item data-category="Network">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/network design(university).jpg" alt="university" loading="lazy">
+                  <img src="./Files/images/network design(university).jpg" alt="University Network" loading="lazy">
                 </figure>
-
-                <h3 class="project-title">university</h3>
-
+                <h3 class="project-title">University</h3>
                 <p class="project-category">Network</p>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="Network">
+            <li class="project-item active" data-filter-item data-category="Network">
               <a href="#">
-
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-
-                  <img src="./Files/images/network design(hotal).webp" alt="hotal" loading="lazy">
+                  <img src="./Files/images/network design(hotal).webp" alt="Hotel Network" loading="lazy">
                 </figure>
-                
-                <h3 class="project-title">hotal</h3>
-
+                <h3 class="project-title">Hotel</h3>
                 <p class="project-category">Network</p>
               </a>
             </li>
+
           </ul>
         </section>
+
       </article>
 
-      <!-- - #BLOG-->
+      <!-- #BLOG -->
 
       <article class="blog" data-page="blog">
         <header>
@@ -826,7 +723,7 @@
         </header>
       </article>
 
-      <!-- - #CONTACT  -->
+      <!-- #CONTACT -->
 
       <article class="contact" data-page="contact">
 
@@ -850,17 +747,19 @@
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
+
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
+
           </form>
         </section>
+
       </article>
     </div>
 
@@ -870,5 +769,6 @@
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
    <div id="tsparticles"></div>
+
   </body>
 </html>
