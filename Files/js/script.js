@@ -1,125 +1,143 @@
 'use strict';
 
-// element toggle function
+/* ─── element toggle ─────────────────────────────────────────── */
 const elementToggleFunc = function (elem) {
   elem.classList.toggle("active");
 };
 
-// sidebar variables
+/* ─── sidebar ────────────────────────────────────────────────── */
 const sidebar    = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
 sidebarBtn.addEventListener("click", function () {
   elementToggleFunc(sidebar);
 });
 
-// download CV function
-function download() {
-  const link = document.createElement('a');
-  link.href = './assets/images/Mo\'men Hassan (CV).pdf';
-  link.download = 'MomenHassan-CV.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+/* ─── typewriter effect ──────────────────────────────────────── */
+function runTypewriter() {
+  const nameEl  = document.querySelector('.info-content .name');
+  const titleEl = document.querySelector('.info-content .title');
+  if (!nameEl || !titleEl) return;
+
+  const nameText  = nameEl.textContent.trim();
+  const titleText = titleEl.textContent.trim();
+
+  function typeText(el, text, speed, callback) {
+    el.textContent = '';
+    const cursor = document.createElement('span');
+    cursor.className = 'tw-cursor';
+    cursor.textContent = '█';
+    el.appendChild(cursor);
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        el.insertBefore(document.createTextNode(text[i++]), cursor);
+      } else {
+        clearInterval(interval);
+        cursor.remove();
+        if (callback) setTimeout(callback, 300);
+      }
+    }, speed);
+  }
+
+  typeText(nameEl, nameText, 55, () => typeText(titleEl, titleText, 35));
 }
 
-// Achievements modal variables
+document.addEventListener('DOMContentLoaded', runTypewriter);
+
+/* ─── CV / cert download handler (removed inline onclick) ────── */
+document.querySelectorAll('a[data-download]').forEach(a => {
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href     = this.href;
+    link.download = this.dataset.filename || 'download';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+});
+
+/* ─── achievements modal ─────────────────────────────────────── */
 const achievementsItems = document.querySelectorAll("[data-Achievements-item]");
 const modalContainer    = document.querySelector("[data-modal-container]");
 const modalCloseBtn     = document.querySelector("[data-modal-close-btn]");
 const overlay           = document.querySelector("[data-overlay]");
 
-// modal content variables
 const modalImg   = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText  = document.querySelector("[data-modal-text]");
 
-// function to toggle modal
 const toggleAchievementsModal = function () {
   modalContainer.classList.toggle("active");
   overlay.classList.toggle("active");
 };
 
-// open modal on achievement item click
 achievementsItems.forEach(item => {
   item.addEventListener("click", function () {
     const avatar = this.querySelector("[data-Achievements-avatar]");
     const title  = this.querySelector("[data-Achievements-title]");
     const text   = this.querySelector("[data-Achievements-text]");
 
-    modalImg.src   = avatar.src;
-    modalImg.alt   = avatar.alt;
-    modalTitle.textContent = title.textContent;
-    modalText.innerHTML    = text.innerHTML;
+    modalImg.src             = avatar.src;
+    modalImg.alt             = avatar.alt;
+    modalTitle.textContent   = title.textContent;
+    modalText.innerHTML      = text.innerHTML;
 
     toggleAchievementsModal();
   });
 });
 
-// close modal
 modalCloseBtn.addEventListener("click", toggleAchievementsModal);
 overlay.addEventListener("click", toggleAchievementsModal);
 
-// custom select & filter variables
-const select        = document.querySelector("[data-select]");
-const selectItems   = document.querySelectorAll("[data-select-item]");
-const selectValue   = document.querySelector("[data-selecct-value]");
-const filterBtns    = document.querySelectorAll("[data-filter-btn]");
-const filterItems   = document.querySelectorAll("[data-filter-item]");
+/* ─── custom select & filter ─────────────────────────────────── */
+const select      = document.querySelector("[data-select]");
+const selectItems = document.querySelectorAll("[data-select-item]");
+const selectValue = document.querySelector("[data-select-value]"); // fixed: was data-selecct-value
+const filterBtns  = document.querySelectorAll("[data-filter-btn]");
+const filterItems = document.querySelectorAll("[data-filter-item]");
 
-// toggle dropdown select
 select.addEventListener("click", function () {
   elementToggleFunc(this);
 });
 
-// filter function (case-insensitive)
 function filterFunc(selectedValue) {
   const sel = selectedValue.toLowerCase().trim();
   filterItems.forEach(item => {
     const cat = item.dataset.category.toLowerCase().trim();
-    if (sel === "all" || cat === sel) {
-      item.classList.add("active");
-    } else {
-      item.classList.remove("active");
-    }
+    item.classList.toggle("active", sel === "all" || cat === sel);
   });
 }
 
-// handle select dropdown choices
 selectItems.forEach(opt => {
   opt.addEventListener("click", function () {
     const val = this.innerText;
     selectValue.innerText = val;
     select.classList.remove("active");
     filterFunc(val);
-
-    // reset main filter buttons
     filterBtns.forEach(b => b.classList.remove("active"));
     filterBtns[0].classList.add("active");
   });
 });
 
-// handle filter buttons on large screens
 let lastClickedBtn = filterBtns[0];
 filterBtns.forEach(btn => {
   btn.addEventListener("click", function () {
     const val = this.innerText;
     selectValue.innerText = val;
     filterFunc(val);
-
     lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
   });
 });
 
-// contact form variables
+/* ─── contact form ───────────────────────────────────────────── */
 const form       = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn    = document.querySelector("[data-form-btn]");
 
-// enable/disable send button based on form validity
 formInputs.forEach(input => {
   input.addEventListener("input", function () {
     if (form.checkValidity()) {
@@ -130,27 +148,22 @@ formInputs.forEach(input => {
   });
 });
 
-// page navigation variables
+/* ─── page navigation ────────────────────────────────────────── */
 const navLinks = document.querySelectorAll("[data-nav-link]");
 const pages    = document.querySelectorAll("[data-page]");
 
-// page navigation logic
-navLinks.forEach((link, idx) => {
+navLinks.forEach((link) => {
   link.addEventListener("click", function () {
     pages.forEach((page, i) => {
-      if (link.innerText.toLowerCase() === page.dataset.page) {
-        page.classList.add("active");
-        navLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        page.classList.remove("active");
-        navLinks[i].classList.remove("active");
-      }
+      const match = link.innerText.toLowerCase() === page.dataset.page;
+      page.classList.toggle("active", match);
+      navLinks[i].classList.toggle("active", match);
     });
+    window.scrollTo(0, 0);
   });
 });
 
-// tsParticles configuration
+/* ─── tsParticles — network topology feel ────────────────────── */
 tsParticles.load("tsparticles", {
   background: {
     color: { value: "#0a0a0a" }
@@ -158,11 +171,11 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   interactivity: {
     events: {
-      onHover: { enable: true, mode: "repulse" },
+      onHover: { enable: true, mode: "grab" },
       resize: true
     },
     modes: {
-      repulse: { distance: 100, duration: 0.4 }
+      grab: { distance: 180, links: { opacity: 0.7 } }
     }
   },
   particles: {
@@ -171,7 +184,7 @@ tsParticles.load("tsparticles", {
       color: "#00ffc3",
       distance: 150,
       enable: true,
-      opacity: 0.3,
+      opacity: 0.35,
       width: 1
     },
     collisions: { enable: false },
@@ -179,13 +192,13 @@ tsParticles.load("tsparticles", {
       direction: "none",
       enable: true,
       outModes: { default: "bounce" },
-      speed: 1
+      speed: 0.8
     },
     number: {
       density: { enable: true, area: 800 },
       value: 60
     },
-    opacity: { value: 0.5 },
+    opacity: { value: 0.6 },
     shape: { type: "circle" },
     size: { value: { min: 1, max: 3 } }
   },
