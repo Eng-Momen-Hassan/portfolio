@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
  <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +9,52 @@
   <link rel="stylesheet" href="./Files/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Poppins for body text -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- JetBrains Mono for headings — cybersecurity feel -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
  </head>
 
   <body>
+
+   <!-- Scroll Progress Bar -->
+   <div class="scroll-progress" id="scrollProgress"></div>
+
+   <!-- Custom Cursor -->
+   <div class="cursor-dot"></div>
+   <div class="cursor-ring"></div>
+
+   <!-- Matrix Rain Canvas -->
+   <canvas id="matrix-canvas"></canvas>
+
+   <!-- Status Badge -->
+   <div class="status-badge">
+     <span class="status-pulse"></span>
+     <span class="status-text">Available for hire</span>
+   </div>
+
+   <!-- Project Detail Modal -->
+   <div class="proj-modal-overlay" id="projModalOverlay">
+     <div class="proj-modal" id="projModal">
+       <button class="proj-modal-close" id="projModalClose">
+         <ion-icon name="close-outline"></ion-icon>
+       </button>
+       <div class="proj-modal-img-wrap">
+         <img id="projModalImg" src="" alt="">
+         <div class="proj-modal-cat-badge" id="projModalCat"></div>
+       </div>
+       <div class="proj-modal-body">
+         <h3 class="proj-modal-title" id="projModalTitle"></h3>
+         <p class="proj-modal-desc" id="projModalDesc"></p>
+         <div class="proj-modal-tools">
+           <span class="proj-tools-label">// Tools Used</span>
+           <div class="proj-tools-list" id="projModalTools"></div>
+         </div>
+         <a class="proj-modal-btn" id="projModalLink" href="#" target="_blank">
+           <ion-icon name="eye-outline"></ion-icon>
+           View Project
+         </a>
+       </div>
+     </div>
+   </div>
 
    <main>
 
@@ -31,7 +68,6 @@
 
         <div class="info-content">
           <h1 class="name" title="Mo'men Hassan">Mo'men Hassan</h1>
-
           <p class="title">Network &amp; Security Engineer</p>
         </div>
 
@@ -54,7 +90,6 @@
             </div>
             <div class="contact-info">
               <p class="contact-title">Email</p>
-              <!-- fixed: added mailto: prefix -->
               <a href="mailto:momenhassan.20.9.1977@gmail.com" class="contact-link">momenhassan.20.9.1977@gmail.com</a>
             </div>
           </li>
@@ -89,12 +124,14 @@
             </div>
           </li>
 
-          <!-- fixed: wrapped in <li> so it's a valid child of <ul> -->
           <li class="contact-item">
             <a href="./Files/images/Mo'men Hassan (CV) .pdf"
                class="cv-button"
                data-download
-               data-filename="MomenHassan-CV.pdf">CV</a>
+               data-filename="MomenHassan-CV.pdf">
+               <ion-icon name="document-outline"></ion-icon>
+                      CV
+            </a>
           </li>
 
         </ul>
@@ -104,19 +141,19 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="https://www.facebook.com/mo.men.hassan.731670" class="social-link">
+            <a href="https://www.facebook.com/mo.men.hassan.731670" class="social-link" title="Facebook">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://www.linkedin.com/in/eng-momen-hassan/" class="social-link">
+            <a href="https://www.linkedin.com/in/eng-momen-hassan/" class="social-link" title="LinkedIn">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="#" class="social-link">
+            <a href="#" class="social-link" title="Instagram">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
@@ -125,45 +162,56 @@
       </div>
     </aside>
 
-    <!-- #MAIN-CONTENT -->
-
     <div class="main-content">
-
-      <!-- #NAVBAR -->
 
       <nav class="navbar">
         <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
+          <li class="navbar-item"><button class="navbar-link active" data-nav-link>About</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link>Resume</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link>Portfolio</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link>Blog</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link>Contact</button></li>
         </ul>
       </nav>
 
-      <!-- #ABOUT -->
-
+      <!-- ========== ABOUT ========== -->
       <article class="about active" data-page="about">
 
         <header>
           <h2 class="h2 article-title">About me</h2>
         </header>
+
+        <!-- Live stats bar -->
+        <div class="live-stats">
+          <div class="stat-item">
+            <span class="stat-value" data-count="3">0</span>
+            <span class="stat-label">Years Learning</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value" data-count="5">0</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value" data-count="11">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value" data-count="100">0</span>
+            <span class="stat-label">+ Users Network</span>
+          </div>
+        </div>
+
+        <!-- Terminal Intro -->
+        <section class="terminal-box">
+          <p>> whoami</p>
+          <p>> Mo'men Hassan</p>
+          <p>> role --netsec --offensive</p>
+          <p>> status: active</p>
+          <p class="blink">_</p>
+        </section>
 
         <section class="about-text">
           <p>
@@ -182,12 +230,64 @@
           </p>
         </section>
 
+        <!-- Tech Arsenal -->
+        <section class="arsenal">
+          <h3 class="h3 arsenal-title">// Tech Arsenal</h3>
+          <div class="arsenal-grid">
+            <div class="arsenal-item" data-tip="Kali Linux">
+              <div class="arsenal-icon">🐉</div>
+              <span>Kali Linux</span>
+            </div>
+            <div class="arsenal-item" data-tip="Nmap">
+              <div class="arsenal-icon">🔍</div>
+              <span>Nmap</span>
+            </div>
+            <div class="arsenal-item" data-tip="Wireshark">
+              <div class="arsenal-icon">🦈</div>
+              <span>Wireshark</span>
+            </div>
+            <div class="arsenal-item" data-tip="Burp Suite">
+              <div class="arsenal-icon">🕷️</div>
+              <span>Burp Suite</span>
+            </div>
+            <div class="arsenal-item" data-tip="Metasploit">
+              <div class="arsenal-icon">💣</div>
+              <span>Metasploit</span>
+            </div>
+            <div class="arsenal-item" data-tip="John The Ripper">
+              <div class="arsenal-icon">🔓</div>
+              <span>JohnTheRipper</span>
+            </div>
+            <div class="arsenal-item" data-tip="Cisco Packet Tracer">
+              <div class="arsenal-icon">🌐</div>
+              <span>Packet Tracer</span>
+            </div>
+            <div class="arsenal-item" data-tip="C#">
+              <div class="arsenal-icon">⚙️</div>
+              <span>C# / .NET</span>
+            </div>
+            <div class="arsenal-item" data-tip="HTML / CSS / JS">
+              <div class="arsenal-icon">💻</div>
+              <span>HTML/CSS/JS</span>
+            </div>
+            <div class="arsenal-item" data-tip="Hydra">
+              <div class="arsenal-icon">🐍</div>
+              <span>Hydra</span>
+            </div>
+            <div class="arsenal-item" data-tip="C++">
+              <div class="arsenal-icon">🔧</div>
+              <span>C++ Embedded</span>
+            </div>
+            <div class="arsenal-item" data-tip="TryHackMe">
+              <div class="arsenal-icon">🚩</div>
+              <span>TryHackMe</span>
+            </div>
+          </div>
+        </section>
+
         <!-- services -->
-
         <section class="service">
-
           <h3 class="h3 service-title">What I'm working on</h3>
-
           <ul class="service-list">
 
             <li class="service-item">
@@ -246,22 +346,15 @@
         </section>
 
         <!-- Achievements -->
-
         <section class="Achievements">
-
           <h3 class="h3 Achievements-title">Achievements</h3>
-
           <ul class="Achievements-list has-scrollbar">
-
             <li class="Achievements-item">
               <div class="content-card" data-Achievements-item>
-
                 <figure class="Achievements-avatar-box">
                   <img src="./Files/images/hack the box .jpg" alt="Hack the box" width="60" data-Achievements-avatar>
                 </figure>
-
                 <h4 class="h4 Achievements-item-title" data-Achievements-title>Hack the Box</h4>
-
                 <div class="Achievements-text" data-Achievements-text>
                   <p>
                     "Momen was hired to assess our network security posture and conduct a penetration test.
@@ -269,32 +362,24 @@
                     He clearly understands the needs of clients and delivers results that matter."
                   </p>
                 </div>
-
               </div>
             </li>
-
           </ul>
         </section>
 
         <!-- Achievements modal -->
-
         <div class="modal-container" data-modal-container>
-
           <div class="overlay" data-overlay></div>
-
           <section class="Achievements-modal">
-
             <button class="modal-close-btn" data-modal-close-btn>
               <ion-icon name="close-outline"></ion-icon>
             </button>
-
             <div class="modal-img-wrapper">
               <figure class="modal-avatar-box">
                 <img src="./Files/images/avatar-1.png" alt="Hack the box" width="20" data-modal-img>
               </figure>
               <img src="./Files/images/avatar-1.png" alt="quote icon">
             </div>
-
             <div class="modal-content">
               <h4 class="h3 modal-title" data-modal-title>Hack the Box</h4>
               <time datetime="2025-06-14">14 June, 2025</time>
@@ -306,85 +391,64 @@
                 </p>
               </div>
             </div>
-
           </section>
         </div>
 
         <!-- Certifications -->
-
         <section class="Certifications">
-
           <h3 class="h3 Certifications-title">Certifications</h3>
-
           <ul class="Certifications-list has-scrollbar">
-
             <li class="Certifications-item">
-              <!-- data-download replaces inline onclick -->
-              <a href="./Files/images/JuniorCybersecurityAnalystUpdate20250804-31-x3rdp0.pdf"
-                 data-download data-filename="Junior-Cybersecurity-Analyst.pdf">
+              <a href="./Files/images/JuniorCybersecurityAnalystUpdate20250804-31-x3rdp0.pdf" data-download data-filename="Junior-Cybersecurity-Analyst.pdf">
                 <img src="./Files/images/junior-cybersecurity-analyst-career-path.1.png" alt="Junior Cybersecurity Analyst">
               </a>
             </li>
-
             <li class="Certifications-item">
-              <a href="./Files/images/NetworkTechnicianCareerPath.pdf"
-                 data-download data-filename="Network-Technician-Career-Path.pdf">
+              <a href="./Files/images/NetworkTechnicianCareerPath.pdf" data-download data-filename="Network-Technician-Career-Path.pdf">
                 <img src="./Files/images/network-technician-career-path.png" alt="Network Technician Career Path">
               </a>
             </li>
-
             <li class="Certifications-item">
-              <a href="./Files/images/Ethical Hacker.pdf"
-                 data-download data-filename="Ethical-Hacker.pdf">
+              <a href="./Files/images/Ethical Hacker.pdf" data-download data-filename="Ethical-Hacker.pdf">
                 <img src="./Files/images/ethical-hacker.png" alt="Ethical Hacker">
               </a>
             </li>
-
             <li class="Certifications-item">
-              <a href="./Files/images/Cisco Certified Support Technician Networking.pdf"
-                 data-download data-filename="CCST-Networking.pdf">
+              <a href="./Files/images/Cisco Certified Support Technician Networking.pdf" data-download data-filename="CCST-Networking.pdf">
                 <img src="./Files/images/CCST Networking.jpeg" alt="CCST Networking">
               </a>
             </li>
-
             <li class="Certifications-item">
-              <a href="./Files/images/Cisco Certified Support Technician IT Support.pdf"
-                 data-download data-filename="CCST-IT-Support.pdf">
+              <a href="./Files/images/Cisco Certified Support Technician IT Support.pdf" data-download data-filename="CCST-IT-Support.pdf">
                 <img src="./Files/images/CCST IT-Support.jpeg" alt="CCST IT Support">
               </a>
             </li>
-
             <li class="Certifications-item">
               <a href="https://tryhackme.com/p/momenhassan.20.9.1977?show_achievement_badge=linux-privesc">
                 <img src="./Files/images/linuxprivesc.svg" alt="Linux Privilege Escalation badge">
               </a>
             </li>
-
             <li class="Certifications-item">
               <a href="https://tryhackme.com/momenhassan.20.9.1977/badges/hash-cracker">
                 <img src="./Files/images/hashcracker.svg" alt="Hash Cracker badge">
               </a>
             </li>
-
             <li class="Certifications-item">
               <a href="https://tryhackme.com/momenhassan.20.9.1977/badges/win-priv-esc">
                 <img src="./Files/images/windowsprivesc.svg" alt="Windows Privilege Escalation badge">
               </a>
             </li>
-
             <li class="Certifications-item">
               <a href="https://tryhackme.com/momenhassan.20.9.1977/badges/blue">
                 <img src="./Files/images/blue.svg" alt="Blue badge">
               </a>
             </li>
-
           </ul>
         </section>
 
       </article>
 
-      <!-- #RESUME -->
-
+      <!-- ========== RESUME ========== -->
       <article class="resume" data-page="resume">
 
         <header>
@@ -392,169 +456,157 @@
         </header>
 
         <section class="timeline">
-
           <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
             <h3 class="h3">Education</h3>
           </div>
-
           <ol class="timeline-list">
-
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">ASSIUT INTERNATIONAL TECHNOLOGICAL UNIVERSITY</h4>
               <span>2023 — 2027</span>
-              <p class="timeline-text">
-                Pursuing a B.Sc. in Information Technology with focus on networking,
-                cybersecurity, and software development.
-              </p>
+              <p class="timeline-text">Pursuing a B.Sc. in Information Technology with focus on networking, cybersecurity, and software development.</p>
             </li>
-
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Cisco Networking Academy</h4>
               <span>2023 — 2024</span>
-              <p class="timeline-text">
-                Completed CCNA curriculum covering routing, switching, and
-                network security fundamentals. Earned CCST Networking and IT Support certifications.
-              </p>
+              <p class="timeline-text">Completed CCNA curriculum covering routing, switching, and network security fundamentals. Earned CCST Networking and IT Support certifications.</p>
             </li>
-
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Hack The Box</h4>
               <span>2025 — Present</span>
-              <p class="timeline-text">
-                Active member completing penetration testing labs and CTF challenges
-                to sharpen offensive security skills in real-world scenarios.
-              </p>
+              <p class="timeline-text">Active member completing penetration testing labs and CTF challenges to sharpen offensive security skills in real-world scenarios.</p>
             </li>
-
           </ol>
         </section>
 
         <section class="timeline">
-
           <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
             <h3 class="h3">Experience</h3>
           </div>
-
           <ol class="timeline-list">
-
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Cybersecurity Trainee — Self-Learning Platforms</h4>
               <span>2023 — Present</span>
-              <p class="timeline-text">
-                Practicing ethical hacking and penetration testing through global platforms like TryHackMe and Hack The Box.
-                Completing hands-on labs focused on individual tools (e.g., Nmap, Burp Suite, JohnTheRipper, Hydra).
-                Gaining experience in vulnerability scanning, privilege escalation, password attacks, and real-world scenarios.
-                Regularly participating in Capture The Flag (CTF) rooms to strengthen problem-solving and technical skills.
-              </p>
+              <p class="timeline-text">Practicing ethical hacking and penetration testing through global platforms like TryHackMe and Hack The Box. Completing hands-on labs focused on individual tools (e.g., Nmap, Burp Suite, JohnTheRipper, Hydra). Gaining experience in vulnerability scanning, privilege escalation, password attacks, and real-world scenarios.</p>
             </li>
-
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Software &amp; Network Programming (Self Practice)</h4>
               <span>2024 — 2025</span>
-              <p class="timeline-text">
-                Built TCP/IP and UDP socket-based servers in C#.
-                Developed a basic GUI-based chat system demonstrating client-server communication.
-                Practiced real-time message handling and GUI integration for networking applications.
-              </p>
+              <p class="timeline-text">Built TCP/IP and UDP socket-based servers in C#. Developed a basic GUI-based chat system demonstrating client-server communication. Practiced real-time message handling and GUI integration for networking applications.</p>
             </li>
-
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Network Design</h4>
               <span>2024 — Present</span>
-              <p class="timeline-text">
-                Planned and implemented a scalable network topology with redundancy and firewall segmentation,
-                supporting over 100 users with zero downtime and full compliance with security standards.
-              </p>
+              <p class="timeline-text">Planned and implemented a scalable network topology with redundancy and firewall segmentation, supporting over 100 users with zero downtime and full compliance with security standards.</p>
             </li>
-
           </ol>
         </section>
 
         <section class="skill">
-
           <h3 class="h3 skills-title">My skills</h3>
-
           <ul class="skills-list content-card">
-
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5">Network Administrator</h5>
-                <data value="85">85%</data>
+                <data value="85"><span class="skill-counter" data-target="85">0</span>%</data>
               </div>
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 85%;"></div>
               </div>
             </li>
-
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5">Penetration Testing</h5>
-                <data value="75">75%</data>
+                <data value="75"><span class="skill-counter" data-target="75">0</span>%</data>
               </div>
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 75%;"></div>
               </div>
             </li>
-
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5">Security Operations</h5>
-                <data value="70">70%</data>
+                <data value="70"><span class="skill-counter" data-target="70">0</span>%</data>
               </div>
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 70%;"></div>
               </div>
             </li>
-
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5">Web Programming</h5>
-                <data value="50">50%</data>
+                <data value="50"><span class="skill-counter" data-target="50">0</span>%</data>
               </div>
               <div class="skill-progress-bg">
                 <div class="skill-progress-fill" style="width: 50%;"></div>
               </div>
             </li>
-
           </ul>
         </section>
 
       </article>
 
-      <!-- #PORTFOLIO -->
-
+      <!-- ========== PORTFOLIO ========== -->
       <article class="portfolio" data-page="portfolio">
 
         <header>
           <h2 class="h2 article-title">Portfolio</h2>
         </header>
 
+        <!-- Portfolio Stats Bar -->
+        <div class="port-stats">
+          <div class="port-stat">
+            <span class="port-stat-num" id="statAll">11</span>
+            <span class="port-stat-label">Total</span>
+          </div>
+          <div class="port-stat">
+            <span class="port-stat-num" id="statNet">6</span>
+            <span class="port-stat-label">Network</span>
+          </div>
+          <div class="port-stat">
+            <span class="port-stat-num" id="statWeb">5</span>
+            <span class="port-stat-label">Web</span>
+          </div>
+        </div>
+
         <section class="projects">
 
+          <!-- Filter Buttons -->
           <ul class="filter-list">
-            <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
-            <li class="filter-item"><button data-filter-btn>Network</button></li>
-            <li class="filter-item"><button data-filter-btn>Web Programming</button></li>
-            <li class="filter-item"><button data-filter-btn>security operations</button></li>
-            <li class="filter-item"><button data-filter-btn>penetration testing</button></li>
+            <li class="filter-item">
+              <button class="active" data-filter-btn>
+                All <span class="filter-count">11</span>
+              </button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>
+                Network <span class="filter-count">6</span>
+              </button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>
+                Web Programming <span class="filter-count">5</span>
+              </button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>
+                security operations <span class="filter-count">0</span>
+              </button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>
+                penetration testing <span class="filter-count">0</span>
+              </button>
+            </li>
           </ul>
 
+          <!-- Mobile Select -->
           <div class="filter-select-box">
-
             <button class="filter-select" data-select>
-              <!-- fixed typo: was data-selecct-value -->
               <div class="select-value" data-select-value>Select category</div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
+              <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
             </button>
-
             <ul class="select-list">
               <li class="select-item"><button data-select-item>All</button></li>
               <li class="select-item"><button data-select-item>Network</button></li>
@@ -562,151 +614,294 @@
               <li class="select-item"><button data-select-item>security operations</button></li>
               <li class="select-item"><button data-select-item>penetration testing</button></li>
             </ul>
-
           </div>
 
+          <!-- ── PROJECT LIST ── -->
           <ul class="project-list">
 
-            <li class="project-item active" data-filter-item data-category="Web Programming">
-              <a href="./Files/projects/wifi card/wifi card.html">
+            <!-- WiFi Card -->
+            <li class="project-item active" data-filter-item data-category="Web Programming"
+                data-title="WiFi Card"
+                data-desc="An interactive WiFi credential card with modern glassmorphism design. Displays network details in a visually appealing format with smooth animations and QR code support."
+                data-tools="HTML,CSS,JavaScript"
+                data-link="./Files/projects/wifi card/wifi card.html">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/wifi card.png" alt="WiFi Card" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">WiFi Card</h3>
-                <p class="project-category">Web Programming</p>
+                <div class="proj-info">
+                  <h3 class="project-title">WiFi Card</h3>
+                  <p class="project-category">Web Programming</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">HTML</span>
+                    <span class="proj-tag">CSS</span>
+                    <span class="proj-tag">JS</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Web Programming">
-              <a href="./Files/projects/animated login register form/login.html">
+            <!-- Animated Login & Register -->
+            <li class="project-item active" data-filter-item data-category="Web Programming"
+                data-title="Animated Login &amp; Register"
+                data-desc="A dual-panel animated authentication form featuring smooth slide transitions between login and registration views. Built with pure CSS animations and vanilla JavaScript."
+                data-tools="HTML,CSS,JavaScript"
+                data-link="./Files/projects/animated login register form/login.html">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/login&register.png" alt="Animated Login & Register" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Animated Login &amp; Register</h3>
-                <p class="project-category">Web Programming</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Animated Login &amp; Register</h3>
+                  <p class="project-category">Web Programming</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">HTML</span>
+                    <span class="proj-tag">CSS</span>
+                    <span class="proj-tag">JS</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Web Programming">
-              <a href="./Files/projects/animated login/login.html">
+            <!-- Animated Login -->
+            <li class="project-item active" data-filter-item data-category="Web Programming"
+                data-title="Animated Login"
+                data-desc="A sleek animated login page with particle effects and glowing input fields. Features real-time form validation and smooth entrance animations."
+                data-tools="HTML,CSS,JavaScript"
+                data-link="./Files/projects/animated login/login.html">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/login.png" alt="Animated Login" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Animated Login</h3>
-                <p class="project-category">Web Programming</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Animated Login</h3>
+                  <p class="project-category">Web Programming</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">HTML</span>
+                    <span class="proj-tag">CSS</span>
+                    <span class="proj-tag">Animations</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Web Programming">
-              <a href="./Files/projects/war tube clock/war tube clock.html">
+            <!-- War Tube Clock -->
+            <li class="project-item active" data-filter-item data-category="Web Programming"
+                data-title="War Tube Clock"
+                data-desc="A retro-futuristic nixie tube clock simulation built entirely in web technologies. Mimics the warm glow of vintage numeral display tubes with realistic flickering effects."
+                data-tools="HTML,CSS,JavaScript,Canvas"
+                data-link="./Files/projects/war tube clock/war tube clock.html">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/war tube clock.png" alt="War Tube Clock" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">War Tube Clock</h3>
-                <p class="project-category">Web Programming</p>
+                <div class="proj-info">
+                  <h3 class="project-title">War Tube Clock</h3>
+                  <p class="project-category">Web Programming</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">HTML</span>
+                    <span class="proj-tag">Canvas</span>
+                    <span class="proj-tag">JS</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Web Programming">
-              <a href="./Files/projects/the cube/Rubick's cube.html">
+            <!-- Rubik's Cube -->
+            <li class="project-item active" data-filter-item data-category="Web Programming"
+                data-title="Rubik's Cube"
+                data-desc="A fully interactive 3D Rubik's Cube simulation rendered in pure CSS 3D transforms. Supports drag rotation, scramble function, and animated solve sequences."
+                data-tools="HTML,CSS 3D,JavaScript"
+                data-link="./Files/projects/the cube/Rubick's cube.html">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/Rubick's cube.png" alt="Rubik's Cube" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Rubik's Cube</h3>
-                <p class="project-category">Web Programming</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Rubik's Cube</h3>
+                  <p class="project-category">Web Programming</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">CSS 3D</span>
+                    <span class="proj-tag">JS</span>
+                    <span class="proj-tag">Interactive</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Network">
-              <a href="#">
+            <!-- Game Development Center -->
+            <li class="project-item active" data-filter-item data-category="Network"
+                data-title="Game Development Center Network"
+                data-desc="Designed a complete network infrastructure for a Game Development Center. Includes VLAN segmentation, DMZ setup, QoS policies for low-latency gaming traffic, and redundant uplinks with OSPF routing."
+                data-tools="Cisco Packet Tracer,VLAN,OSPF,Firewall,QoS"
+                data-link="#">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./Files/images/network design(Game Development Center).jpg" alt="Game Development Center Network" loading="lazy">
+                  <img src="./Files/images/network design(Game Development Center).jpg" alt="Game Development Center" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Game Development Center</h3>
-                <p class="project-category">Network</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Game Development Center</h3>
+                  <p class="project-category">Network</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">VLAN</span>
+                    <span class="proj-tag">OSPF</span>
+                    <span class="proj-tag">QoS</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Network">
-              <a href="#">
+            <!-- International School -->
+            <li class="project-item active" data-filter-item data-category="Network"
+                data-title="International School Network"
+                data-desc="Full-scale network design for an international school campus. Separate VLANs for admin, students, and IoT devices. Centralized management via Cisco WLC and secure internet gateway with content filtering."
+                data-tools="Cisco,VLAN,WLC,Content Filtering,ACL"
+                data-link="#">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./Files/images/network design(International School).png" alt="International School Network" loading="lazy">
+                  <img src="./Files/images/network design(International School).png" alt="International School" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">International School</h3>
-                <p class="project-category">Network</p>
+                <div class="proj-info">
+                  <h3 class="project-title">International School</h3>
+                  <p class="project-category">Network</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">WLC</span>
+                    <span class="proj-tag">ACL</span>
+                    <span class="proj-tag">VLAN</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Network">
-              <a href="#">
+            <!-- Accounting Offices -->
+            <li class="project-item active" data-filter-item data-category="Network"
+                data-title="Accounting Offices Network"
+                data-desc="Secure network design for multi-floor accounting offices. Features strict firewall policies, encrypted inter-office VPN tunnels, file server integration, and audit-compliant access controls."
+                data-tools="Cisco,VPN,Firewall,ACL,DHCP"
+                data-link="#">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./Files/images/network design(accounting offices).png" alt="Accounting Offices Network" loading="lazy">
+                  <img src="./Files/images/network design(accounting offices).png" alt="Accounting Offices" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Accounting Offices</h3>
-                <p class="project-category">Network</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Accounting Offices</h3>
+                  <p class="project-category">Network</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">VPN</span>
+                    <span class="proj-tag">Firewall</span>
+                    <span class="proj-tag">ACL</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Network">
-              <a href="#">
+            <!-- Sporting Club -->
+            <li class="project-item active" data-filter-item data-category="Network"
+                data-title="Sporting Club Network"
+                data-desc="Designed a high-availability network for a sporting club facility. Covers indoor and outdoor zones with seamless WiFi roaming, CCTV network integration, and a guest captive portal."
+                data-tools="Cisco,WiFi Roaming,CCTV,Captive Portal,PoE"
+                data-link="#">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./Files/images/network design(sporting club).PNG" alt="Sporting Club Network" loading="lazy">
+                  <img src="./Files/images/network design(sporting club).PNG" alt="Sporting Club" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Sporting Club</h3>
-                <p class="project-category">Network</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Sporting Club</h3>
+                  <p class="project-category">Network</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">WiFi</span>
+                    <span class="proj-tag">CCTV</span>
+                    <span class="proj-tag">PoE</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Network">
-              <a href="#">
+            <!-- University -->
+            <li class="project-item active" data-filter-item data-category="Network"
+                data-title="University Campus Network"
+                data-desc="Enterprise-grade network topology for a university campus. Multi-building fiber backbone, separate faculty/student/lab VLANs, centralized RADIUS authentication, and redundant core switches."
+                data-tools="Fiber,RADIUS,VLAN,Spanning Tree,EIGRP"
+                data-link="#">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/network design(university).jpg" alt="University Network" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">University</h3>
-                <p class="project-category">Network</p>
+                <div class="proj-info">
+                  <h3 class="project-title">University Campus</h3>
+                  <p class="project-category">Network</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">RADIUS</span>
+                    <span class="proj-tag">EIGRP</span>
+                    <span class="proj-tag">Fiber</span>
+                  </div>
+                </div>
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="Network">
-              <a href="#">
+            <!-- Hotel -->
+            <li class="project-item active" data-filter-item data-category="Network"
+                data-title="Hotel Network Infrastructure"
+                data-desc="Hospitality-focused network design covering guest rooms, conference halls, and back-office systems. Prioritizes guest WiFi isolation, POS system security, and seamless VoIP integration."
+                data-tools="Cisco,VoIP,POS Security,Guest VLAN,SIP"
+                data-link="#">
+              <a class="proj-card-link" href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./Files/images/network design(hotal).webp" alt="Hotel Network" loading="lazy">
+                  <div class="proj-scan-line"></div>
                 </figure>
-                <h3 class="project-title">Hotel</h3>
-                <p class="project-category">Network</p>
+                <div class="proj-info">
+                  <h3 class="project-title">Hotel Infrastructure</h3>
+                  <p class="project-category">Network</p>
+                  <div class="proj-tags">
+                    <span class="proj-tag">VoIP</span>
+                    <span class="proj-tag">SIP</span>
+                    <span class="proj-tag">POS</span>
+                  </div>
+                </div>
               </a>
             </li>
 
@@ -715,16 +910,21 @@
 
       </article>
 
-      <!-- #BLOG -->
-
+      <!-- ========== BLOG ========== -->
       <article class="blog" data-page="blog">
         <header>
           <h2 class="h2 article-title">Blog</h2>
         </header>
+        <div class="blog-empty">
+          <div class="blog-empty-icon">
+            <ion-icon name="terminal-outline"></ion-icon>
+          </div>
+          <p class="blog-empty-text">// Posts incoming — stay tuned</p>
+          <span class="blog-cursor">█</span>
+        </div>
       </article>
 
-      <!-- #CONTACT -->
-
+      <!-- ========== CONTACT ========== -->
       <article class="contact" data-page="contact">
 
         <header>
@@ -740,41 +940,35 @@
         </section>
 
         <section class="contact-form">
-
           <h3 class="h3 form-title">Contact Form</h3>
-
           <form action="#" class="form" data-form>
-
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
           </form>
+          <div class="logs-box"></div>
         </section>
 
       </article>
     </div>
 
    </main>
-   
+
    <footer class="minimal-footer">
-        <div class="container">
-            <p>© 2026 Mo'men Hassan.</p>
-        </div>
-    </footer>
+     <div class="container">
+       <p>© 2026 Mo'men Hassan.</p>
+     </div>
+   </footer>
 
    <script src="./Files/js/script.js"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-   <div id="tsparticles"></div>
 
   </body>
 </html>
